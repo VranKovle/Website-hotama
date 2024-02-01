@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- bagian swiper-->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2" defer></script>
+    <style>  .service-card {
+        transition: transform 0.3s;
+    }
+
+    .service-card:hover,
+    .service-card:active {
+        transform: scale(1.1);
+    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+    * {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    
+    </style>
+        <script>
+          tailwind.config = {
+              theme: {
+                  extend: {
+                      colors: {
+                          'green-custom': '#10957D',
+                      }
+                  }
+              }
+          }
+      </script>
+      <script>
+        document.addEventListener("scroll", () => {
+            
+            const nav = document.querySelector("nav");
+  
+            if (window.scrollY > 200) {
+                nav.classList.add("backdrop-filter", "backdrop-blur-md", "bg-opacity-20");
+                
+            } else {
+                nav.classList.remove("backdrop-filter", "backdrop-blur-md", "bg-opacity-20");
+               
+            }
+        });
+    </script>
+
+
+</head>
+<!-- xl:block xl:absolute xl:bg-green-custom xl:ml-[1350px] xl:bg-opacity-50 xl:w-12
+xl:-mt-[500px] xl:rounded-md -->
+<body>
+    <div>
+        <a href="#home"> <img src="img/chevron-up.svg" alt="" class="bg-green-custom fixed bottom-2.5 right-5 rounded-lg p-2 opacity-60 z-10"></a>
+      </div>
+<!-- Augus -->
+<header id="2">
+    <nav class=" z-50 p-5 bg-transparent md:flex md:items-center md:justify-between w-full z-10 fixed transition-all ease-in-out duration-100 " id="navbar" x-data="{ navOpen: false }">
+        <div class="flex justify-between items-center">
+            
+        <span class="text-3xl cursor-pointer">
+          <img class="h-6 absolute px-2 md:px-7" src="asset/image 1.svg" alt="" id="logo"><img class="px-12 md:px-16 mt-1 relative" src="asset/image 2.png" alt="" id="hotama">
+        </span>
+    
+        <div class="lg:hidden md:hidden">
+            <button @click="navOpen = !navOpen" class="text-black  focus:outline-none">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <div x-show="navOpen" class="md:hidden  fixed top-0 right-0 w-64 h-screen transform translate-x-0 transition-transform ease-in-out duration-300 bg-teal-500"
+
+x-transition:enter="transition-transform ease-out duration-300"
+x-transition:enter-start="translate-x-full"
+x-transition:enter-end="translate-x-0"
+x-transition:leave="transition-transform ease-in duration-300"
+x-transition:leave-start="translate-x-0"
+x-transition:leave-end="translate-x-full">
+            <div class="flex justify-end p-4 md:hidden">
+                <button @click="navOpen = !navOpen" class="text-white hover:text-gray-700 focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex flex-col items-center">
+                <a href="#aboutmob" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">About</a>
+                <a href="#works" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Works</a>
+                <a href="#services" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Services</a>
+                <a href="#testimonial" class="block text-white text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">Testimonial</a>
+                <a href="#contact" class="border-2 text-center border-white text-white p-2 w-36 py-2 rounded-lg" x-on:click="navOpen = !navOpen">Contact Us</a>
+               
+               
+            </div>
+        </div>
+    
+      </div>
+      
+    
+      <!-- ISIAN NAVBAR -->
+      <div  id="sidebar">
+      <ul class="md:flex-row md:gap-5 items-center justify-center z-[-1] md:static w-full absolute bg-transparent left-0 md:w-auto
+       md:py-0 py-10 md:pl-0 md:opacity-100 opacity-0 top-[-400px] transition-all ease-in duration-500 
+       lg:mx-10 lg:gap-10 flex text-center md:mr-0 flex-col text-white md:text-black" id="ul">
+      <li class=" md:my-0 ">
+        <a href="#about" class="hidden lg:block text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">About</a>
+        <a href="#aboutmob" class="lg:hidden text-lg py-2 hover:text-gray-300" x-on:click="navOpen = !navOpen">About</a>
+      </li>
+      <li class="mt-10 md:my-0">
+        <a href="#works" class="text-xl  hover:text-cyan-500 duration-500">Works</a>
+      </li>
+      <li class="mt-10 md:my-0">
+        <a href="#services" class="text-xl  hover:text-cyan-500 duration-500">Services</a>
+      </li>
+      <li class="mt-10 md:my-0 mb-10">
+        <a href="#testimonial" class="text-xl  hover:text-cyan-500 duration-500">Testimonial</a>
+      </li>
+      <a href="#contact" class="text-white md:text-teal-600 duration-500 px-4 rounded-md py-2 w-32 lg:w-36 border-2 font-medium border-teal-600">
+        Contact Us
+      </a>
+    </ul>
+  </div>
+      </nav>
+</header>
+
+
+<section id="home" class="mb-80">
+<div class="container flex flex-col items-center gap-10">
+<div class="mx-auto">
+      <img src="asset/Orang 1.svg" alt="" class="absolute top-44 right-10 hidden xl:block md:w-[550px] md:right-[80px] transition-all ease-in duration-500">
+      </div>
+      <img src="asset/teal circle.svg" class="-z-50 absolute  right-0 -top-10 hidden lg:block transition-all ease-in duration-500">
+      <!-- logggiiicc -->
+      <img src="asset/teal circle kecil.svg" class="-z-50 absolute w-52 h-52 right-0 lg:hidden transition-all ease-in duration-500">
+      <!-- Yellow Circle-->
+      <img src="asset/yellow circle (1).svg" class="absolute top-44 right-72 sm:top-44 sm:right-[550px] md:right-[680px] md:top-[210px] xl:right-[590px] xl:top-[330px] 
+      lg:right-[900px] lg:top-[200px] -z-50 transition-all ease-in duration-500">
+      <!-- Green Circle -->
+      <img src="asset/light green circle.svg" class="absolute md:right-[100px] lg:top-[600px] top-[420px] lg:right-10 xl:block right-2 -z-50 transition-all ease-in duration-500">
+
+      <!-- top-52 left-12 -->
+      <!-- lg:top-80 top-40 lg:left-[800px] left-[80px] -->
+      </div>
+      <div class="text-center pt-64 xl:text-left xl:px-24 md:text-xl">
+  <h1 class="md:text-5xl font-bold md:inline-block text-4xl inline-block mx-5 md:mx-0">Your Trusty IT</h1>
+    <h1 class="md:text-5xl font-bold inline-block md:inline-block xl:hidden text-4xl">Consultant</h1>
+    <h1 class="md:text-5xl font-bold hidden xl:block lg:hidden text-4xl">Consultant With</h1>
+      <h1 class="md:text-5xl font-bold xl:hidden text-4xl mx-5 lg:mx-0">With<span class="text-teal-600 md:text-5xl font-bold text-4xl "> Years of Experience</span></h1>
+        <span class="text-teal-600 md:text-5xl font-bold hidden xl:block text-4xl xl:mb-5"> Years of Experience</span>
+<div></div>
+
+<p class="font-normal md:text-lg pt-5 xl:inline xl:mt-10 ">Helping your business through </p>
+<p class="font-normal md:text-lg xl:inline xl:mt-10">digital solution and best services</p>
+
+<a href="#" class="inline-block text-lg py-3 px-8 capitalize text-center cursor-pointer rounded-xl ease-linear duration-200 text-white bg-teal-600 w-44 hover:bg-teal-700 mt-5 xl:block">Let's See</a>
+</div>
+</div>
+</section>
+
+<!-- Delvin -->
+<div class="h-96 flex flex-col items-center justify-center bg-green-custom " style="background-image: url('img/BG.svg');"> 
+    <h1 class="min-[320px]:text-[20px] max-[425px]:text-[23px] md:text-3xl sm:text-2xl xl:text-5xl lg:text-4xl font-bold text-center text-white ">Some noteworthy calculation</h1>
+    <h2 class="text-[10px] text-center text-white -mt-3 sm:text-[14px] md:text-[19px] xl:text-[20px] xl:font-normal mt-4">The progress made in our journey conveyed through numerical
+        achievements</h2>
+    <div class="grid grid-cols-2 items-center justify-center mt-2 gap-4 mx-10 md:flex md:justify-center sm:gap-15 sm:mx-14">
+        <div class="flex flex-col items-center justify-center ">
+            <h1 class="text-white font-bold text-sm sm:text-2xl xl:text-5xl">10+</h1>
+            <p class="text-white text-center text-[6px] sm:text[20px] xl:text-[13.2px] ">Years of Experience</p>
+        </div>
+        <img src="img/Divider.svg" alt="" class="hidden lg:block">
+        <div class="flex flex-col items-center justify-center ">
+            <h1 class="text-white font-bold text-sm sm:text-2xl  xl:text-5xl">100+</h1>
+            <p class="text-white text-center text-[6px] xl:text-[13.5px] ">Professionals</p>
+        </div>
+        <img src="img/Divider.svg" alt="" class="hidden lg:block">
+        <div class="flex flex-col items-center justify-center ">
+            <h1 class="text-white font-bold text-sm sm:text-2xl  xl:text-5xl">50+</h1>
+            <p class="text-white text-center text-[6px] xl:text-[13.5px] ">Amazing Projects</p>
+        </div>
+        <img src="img/Divider.svg" alt="" class="hidden lg:block">
+        <div class="flex flex-col items-center justify-center ">
+            <h1 class="text-white font-bold text-sm sm:text-2xl  xl:text-5xl">200+</h1>
+            <p class="text-white text-center text-[6px] xl:text-[13.5px]">Satisfied Partners</p>
+        </div>
+    </div>
+  </div>
+  
+<!-- Mobile View -->
+<div class="flex flex-col lg:hidden mt-20 scroll-mt-[90px]" id="aboutmob">
+    <div class="flex justify-center">
+      <img src="img/austin-distel-_S7-KX8geL0-unsplash 1.svg" alt="" />
+    </div>
+    <div class="relative">
+      <span class="flex justify-center">
+        <img src="img/Section_ Founder Hotama Talking.svg" alt="" class="absolute w-[130px] -mt-[20px]" />
+      </span>
+    </div>
+    <div class="text-center mt-20">
+      <p class="text-xl font-bold mt-4">About <span class="text-green-custom">Us</span></p>
+      <p class="font-light text-[10px] px-5 text-balance text-neutral-800 text-opacity-70 mx-4 md:text-[13px]">
+        PT Kreasi Putra Hotama is a reputable software development and IT consulting company with over 10 years of experience. We pride ourselves on being a trusted partner for businesses seeking innovative technology solutions. With a team of skilled professionals, we have successfully delivered numerous software projects and provided exceptional IT consulting services to clients across various industries.
+      </p>
+    </div>
+  </div>
+  
+  <!-- Desktop/tablet View -->
+  <div class="hidden lg:flex mx-32 mt-20 scroll-mt-[90px]" id="about">
+    <div class="w-full lg:w-1/2 lg:mr-0">
+      <div class="flex justify-center lg:mr-8 xl:mr-16">
+        <img src="img/austin-distel-_S7-KX8geL0-unsplash 1.svg" alt="" class="w-52 h-52 rounded-xl lg:w-72 lg:h-72 xl:w-96 xl:h-96" />
+      </div>
+      <div class="relative">
+        <span class="flex justify-center">
+          <img src="img/Section_ Founder Hotama Talking.svg" alt="" class="absolute xl:-mt-[100px] lg:-mt-[50px] xl:-mr-[280px] lg:-mr-[140px] xl:w-[300px]" />
+        </span>
+      </div>
+    </div>
+    <div class="w-full lg:w-1/2 mt-8">
+      <div class="ml-4 lg:ml-[40px]">
+        <p class="text-4xl font-bold -mt-5">About <span class="text-green-custom">Us</span></p>
+        <p class="font-light text-md text-neutral-800 text-opacity-70 mt-5">
+          PT Kreasi Putra Hotama is a reputable software development and IT consulting company with over 10 years of experience. We pride ourselves on being a trusted partner for businesses seeking innovative technology solutions. With a team of skilled professionals, we have successfully delivered numerous software projects and provided exceptional IT consulting services to clients across various industries.
+        </p>
+      </div>
+    </div>
+  </div>
+  
+
+    <div>
+      <div class="mt-14 text-center xl:p-52">
+        <h1 class="text-lg font-bold p-4 sm:text-xl md:text-2xl xl:text-4xl">Your <span class="text-green-custom">Problem Solver</span></h1>
+        <p class="font-light text-[12px] mx-auto px-16 sm:text-[15px] md:px-20 lg:mx-20 xl:text-[17px]">You need an experience unmatched anywhere else, with knowledgeable and thoughtful consultants plus flexible, tailored approaches — all centered on the right outcomes for your business.</p>
+      </div>
+      <div class="flex justify-center p-8 xl:-mt-[150px]">
+        <button type="button" class="bg-green-custom p-2 rounded-lg text-white sm:p-4 lg:w-[150px] lg:rounded-sm  ">Discover More</button>
+      </div>
+      <div >
+        <img src="img/latar(kotak).svg" alt="" class="absolute -mt-[100px] ml-[30px] sm:h-[35px] lg:ml-[60px] lg:h-[50px] xl:h-[60px] xl:-mt-[150px]"/>
+      </div>
+      <div>
+        <img src="img/latar(kotak).svg" alt="" class="absolute -mt-[250px] ml-[270px] min-[375px]:ml-[300px] min-[425px]:ml-[350px] sm:h-[30px] sm:ml-[550px] sm:-mt-[260px] md:h-[35px] md:ml-[660px]
+         lg:ml-[930px] lg:h-[50px] xl:h-[60px] xl:-mt-[370px] xl:ml-[1100px]" >
+      </div>
+    
+      
+<!-- Eril -->
+<div class="bg-teal-600 py-16">
+<div class="w-full md:w-full h-full relative">
+        
+
+      
+  <div class="w-full md:w-[730px] mx-auto text-center text-white mt-12">
+      
+      <div class="text-[32px] md:text-[56px] font-['Plus Jakarta Sans'] leading-[36px] md:leading-[64px]">Elevate Your IT Experience!</div>
+  </div>
+
+  <div class="w-full md:w-[692px] mx-auto text-center text-white mt-4">
+      <div class="text-[12px] md:text-[18px] font-light font-['Plus Jakarta Sans'] md:w-full lg:w-3/4 xl:w-2/3 sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
+          At Hotama, we are dedicated to delivering our very best efforts to ensure your satisfaction. Our commitment goes beyond mere service – we strive to elevate your entire IT experience.
+      </div>
+  </div>
+  
+
+
+  <div class="w-full px-4 mt-8 md:mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+
+      <!-- card 1 -->
+      <div class="service-card w-full md:w-[350px] lg:w-[320px] h-auto px-4 md:px-8 py-6 md:py-10 bg-white rounded-lg flex-col justify-start items-start gap-6 inline-flex overflow-hidden mx-auto zoom ">
+          <div class="w-8 h-8 md:w-10 md:h-10 relative overflow-hidden rounded-full">
+              <img src="asset/internet.png" alt="Website & Desktop App" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-col justify-start items-center gap-2 md:gap-3 flex overflow-hidden">
+              <div class="w-[286px] text-zinc-900 text-xl md:text-2xl font-semibold font-['Manrope'] leading-loose overflow-hidden">Website & Desktop App</div>
+              <div class="w-[286px] text-zinc-900 text-sm md:text-base font-normal font-['Manrope'] leading-relaxed overflow-hidden">We blend aesthetics with functionality, ensuring a seamless user experience that leaves a lasting impression</div>
+          </div>
+          <div class="flex items-center gap-2 mt-auto">
+              <a href="#" class="text-teal-600 text-xs md:text-sm font-bold font-['Manrope'] leading-none">Explore</a>
+              <div class="flex items-center ml-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_151_108)">
+                          <path d="M10.1939 4.47132C9.93351 4.21097 9.93351 3.78886 10.1939 3.52851C10.4542 3.26816 10.8763 3.26816 11.1367 3.52851L15.1367 7.52851C15.397 7.78886 15.397 8.21097 15.1367 8.47132L11.1367 12.4713C10.8763 12.7317 10.4542 12.7317 10.1939 12.4713C9.93351 12.211 9.93351 11.7889 10.1939 11.5285L13.0558 8.66657H1.33912C0.966869 8.66657 0.6651 8.3681 0.6651 7.99991C0.6651 7.63172 0.966869 7.33324 1.33912 7.33324H13.0558L10.1939 4.47132Z" fill="#10957D"/>
+                      </g>
+                      <defs>
+                          <clipPath id="clip0_151_108">
+                              <rect width="16" height="16" fill="white" transform="translate(-0.00158691 -0.00012207)"/>
+                          </clipPath>
+                      </defs>
+                  </svg>
+              </div>
+          </div>
+      </div>
+      
+
+      <!-- Card 2 -->
+      <div class="service-card w-full md:w-[350px] lg:w-[320px] h-auto px-4 md:px-8 py-6 md:py-10 bg-white rounded-lg flex-col justify-start items-start gap-6 inline-flex overflow-hidden mx-auto   zoom">
+          <div class="w-8 h-8 md:w-10 md:h-10 relative overflow-hidden rounded-full">
+              <img src="asset/01.png" alt="Mobile Application" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-col justify-start items-center gap-2 md:gap-3 flex overflow-hidden">
+              <div class="w-[286px] text-zinc-900 text-xl md:text-2xl font-semibold font-['Manrope'] leading-loose overflow-hidden">Mobile Application</div>
+              <div class="w-[286px] text-zinc-900 text-sm md:text-base font-normal font-['Manrope'] leading-relaxed overflow-hidden">Step into the mobile realm with our cutting-edge Android and iOS development.</div>
+          </div>
+          <div class="flex items-center gap-2 mt-auto">
+              <a href="#" class="text-teal-600 text-xs md:text-sm font-bold font-['Manrope'] leading-none">Explore</a>
+              <div class="flex items-center ml-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_151_108)">
+                          <path d="M10.1939 4.47132C9.93351 4.21097 9.93351 3.78886 10.1939 3.52851C10.4542 3.26816 10.8763 3.26816 11.1367 3.52851L15.1367 7.52851C15.397 7.78886 15.397 8.21097 15.1367 8.47132L11.1367 12.4713C10.8763 12.7317 10.4542 12.7317 10.1939 12.4713C9.93351 12.211 9.93351 11.7889 10.1939 11.5285L13.0558 8.66657H1.33912C0.966869 8.66657 0.6651 8.3681 0.6651 7.99991C0.6651 7.63172 0.966869 7.33324 1.33912 7.33324H13.0558L10.1939 4.47132Z" fill="#10957D"/>
+                      </g>
+                      <defs>
+                          <clipPath id="clip0_151_108">
+                              <rect width="16" height="16" fill="white" transform="translate(-0.00158691 -0.00012207)"/>
+                          </clipPath>
+                      </defs>
+                  </svg>
+              </div>
+          </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="service-card w-full md:w-[350px] lg:w-[320px] h-auto px-4 md:px-8 py-6 md:py-10 bg-white rounded-lg flex-col justify-start items-start gap-6 inline-flex overflow-hidden mx-auto   zoom">
+          <div class="w-8 h-8 md:w-10 md:h-10 relative overflow-hidden rounded-full">
+              <img src="asset/creative.png" alt="Digital Content" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-col justify-start items-center gap-2 md:gap-3 flex overflow-hidden">
+              <div class="w-[286px] text-zinc-900 text-xl md:text-2xl font-semibold font-['Manrope'] leading-loose overflow-hidden">Digital Content</div>
+              <div class="w-[286px] text-zinc-900 text-sm md:text-base font-normal font-['Manrope'] leading-relaxed overflow-hidden">From compelling copy to captivating visuals, we create digital content that resonates with your audience.</div>
+          </div>
+          <div class="flex items-center gap-2 mt-auto">
+              <a href="#" class="text-teal-600 text-xs md:text-sm font-bold font-['Manrope'] leading-none">Explore</a>
+              <div class="flex items-center ml-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_151_108)">
+                          <path d="M10.1939 4.47132C9.93351 4.21097 9.93351 3.78886 10.1939 3.52851C10.4542 3.26816 10.8763 3.26816 11.1367 3.52851L15.1367 7.52851C15.397 7.78886 15.397 8.21097 15.1367 8.47132L11.1367 12.4713C10.8763 12.7317 10.4542 12.7317 10.1939 12.4713C9.93351 12.211 9.93351 11.7889 10.1939 11.5285L13.0558 8.66657H1.33912C0.966869 8.66657 0.6651 8.3681 0.6651 7.99991C0.6651 7.63172 0.966869 7.33324 1.33912 7.33324H13.0558L10.1939 4.47132Z" fill="#10957D"/>
+                      </g>
+                      <defs>
+                          <clipPath id="clip0_151_108">
+                              <rect width="16" height="16" fill="white" transform="translate(-0.00158691 -0.00012207)"/>
+                          </clipPath>
+                      </defs>
+                  </svg>
+              </div>
+          </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="service-card w-full md:w-[350px] lg:w-[320px] h-auto px-4 md:px-8 py-6 md:py-10 bg-white rounded-lg flex-col justify-start items-start gap-6 inline-flex overflow-hidden mx-auto   zoom">
+          <div class="w-8 h-8 md:w-10 md:h-10 relative overflow-hidden rounded-full">
+              <img src="asset/search.png" alt="SEO Services" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-col justify-start items-center gap-2 md:gap-3 flex overflow-hidden">
+              <div class="w-[286px] text-zinc-900 text-xl md:text-2xl font-semibold font-['Manrope'] leading-loose overflow-hidden">SEO Services</div>
+              <div class="w-[286px] text-zinc-900 text-sm md:text-base font-normal font-['Manrope'] leading-relaxed overflow-hidden">Harness the power of SEO to propel your business to the forefront of search engine results.</div>
+          </div>
+          <div class="flex items-center gap-2 mt-auto">
+              <a href="#" class="text-teal-600 text-xs md:text-sm font-bold font-['Manrope'] leading-none">Explore</a>
+              <div class="flex items-center ml-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_151_108)">
+                          <path d="M10.1939 4.47132C9.93351 4.21097 9.93351 3.78886 10.1939 3.52851C10.4542 3.26816 10.8763 3.26816 11.1367 3.52851L15.1367 7.52851C15.397 7.78886 15.397 8.21097 15.1367 8.47132L11.1367 12.4713C10.8763 12.7317 10.4542 12.7317 10.1939 12.4713C9.93351 12.211 9.93351 11.7889 10.1939 11.5285L13.0558 8.66657H1.33912C0.966869 8.66657 0.6651 8.3681 0.6651 7.99991C0.6651 7.63172 0.966869 7.33324 1.33912 7.33324H13.0558L10.1939 4.47132Z" fill="#10957D"/>
+                      </g>
+                      <defs>
+                          <clipPath id="clip0_151_108">
+                              <rect width="16" height="16" fill="white" transform="translate(-0.00158691 -0.00012207)"/>
+                          </clipPath>
+                      </defs>
+                  </svg>
+              </div>
+          </div>
+      </div>
+
+      <!--  Card 5 -->
+      <div class="service-card w-full md:w-[350px] lg:w-[320px] h-auto px-4 md:px-8 py-6 md:py-10 bg-white rounded-lg flex-col justify-start items-start gap-6 inline-flex overflow-hidden mx-auto   zoom">
+          <div class="w-8 h-8 md:w-10 md:h-10 relative overflow-hidden rounded-full">
+              <img src="asset/chat.png" alt="Consulting" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-col justify-start items-center gap-2 md:gap-3 flex overflow-hidden">
+              <div class="w-[286px] text-zinc-900 text-xl md:text-2xl font-semibold font-['Manrope'] leading-loose overflow-hidden">Consulting</div>
+              <div class="w-[286px] text-zinc-900 text-sm md:text-base font-normal font-['Manrope'] leading-relaxed overflow-hidden">Navigate the complexities of the digital landscape with our expert consulting services.</div>
+          </div>
+          <div class="flex items-center gap-2 mt-auto">
+              <a href="#" class="text-teal-600 text-xs md:text-sm font-bold font-['Manrope'] leading-none">Explore</a>
+              <div class="flex items-center ml-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_151_108)">
+                          <path d="M10.1939 4.47132C9.93351 4.21097 9.93351 3.78886 10.1939 3.52851C10.4542 3.26816 10.8763 3.26816 11.1367 3.52851L15.1367 7.52851C15.397 7.78886 15.397 8.21097 15.1367 8.47132L11.1367 12.4713C10.8763 12.7317 10.4542 12.7317 10.1939 12.4713C9.93351 12.211 9.93351 11.7889 10.1939 11.5285L13.0558 8.66657H1.33912C0.966869 8.66657 0.6651 8.3681 0.6651 7.99991C0.6651 7.63172 0.966869 7.33324 1.33912 7.33324H13.0558L10.1939 4.47132Z" fill="#10957D"/>
+                      </g>
+                      <defs>
+                          <clipPath id="clip0_151_108">
+                              <rect width="16" height="16" fill="white" transform="translate(-0.00158691 -0.00012207)"/>
+                          </clipPath>
+                      </defs>
+                  </svg>
+              </div>
+          </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="service-card w-full md:w-[350px] lg:w-[320px] h-auto px-4 md:px-8 py-6 md:py-10 bg-white rounded-lg flex-col justify-start items-start gap-6 inline-flex overflow-hidden mx-auto  zoom">
+          <div class="w-8 h-8 md:w-10 md:h-10 relative overflow-hidden rounded-full">
+              <img src="asset/developing.png" alt="Digital Strategist" class="w-full h-full object-cover">
+          </div>
+          <div class="flex-col justify-start items-center gap-2 md:gap-3 flex overflow-hidden">
+              <div class="w-[286px] text-zinc-900 text-xl md:text-2xl font-semibold font-['Manrope'] leading-loose overflow-hidden">Digital Strategist</div>
+              <div class="w-[286px] text-zinc-900 text-sm md:text-base font-normal font-['Manrope'] leading-relaxed overflow-hidden">Pioneering innovation, we guide you towards a future where your digital presence is synonymous with success.</div>
+          </div>
+          <div class="flex items-center gap-2 mt-auto">
+              <a href="#" class="text-teal-600 text-xs md:text-sm font-bold font-['Manrope'] leading-none">Explore</a>
+              <div class="flex items-center ml-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <g clip-path="url(#clip0_151_108)">
+                          <path d="M10.1939 4.47132C9.93351 4.21097 9.93351 3.78886 10.1939 3.52851C10.4542 3.26816 10.8763 3.26816 11.1367 3.52851L15.1367 7.52851C15.397 7.78886 15.397 8.21097 15.1367 8.47132L11.1367 12.4713C10.8763 12.7317 10.4542 12.7317 10.1939 12.4713C9.93351 12.211 9.93351 11.7889 10.1939 11.5285L13.0558 8.66657H1.33912C0.966869 8.66657 0.6651 8.3681 0.6651 7.99991C0.6651 7.63172 0.966869 7.33324 1.33912 7.33324H13.0558L10.1939 4.47132Z" fill="#10957D"/>
+                      </g>
+                      <defs>
+                          <clipPath id="clip0_151_108">
+                              <rect width="16" height="16" fill="white" transform="translate(-0.00158691 -0.00012207)"/>
+                          </clipPath>
+                      </defs>
+                  </svg>
+              </div>
+          </div>
+      </div>
+
+  </div>
+</div>
+</div>
+
+<div class="mt-[100px]"></div>
+<!-- Frenico -->
+<div class="flex justify-center items-center scroll-mt-[120px]" id="works">
+  <div class="flex-col w-screen mx-auto">
+      <div class="text-center">
+          <span class="text-neutral-800 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-['Plus Jakarta Sans']">Our </span>
+          <span class="text-teal-600 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl sm:mr-2 font-bold font-['Plus Jakarta Sans']">Best</span>
+          <span class="text-teal-600 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold font-['Plus Jakarta Sans']">Works</span>
+      </div>
+
+      <!-- Box kanan-kiri 1 -->
+      <div class="flex flex-wrap justify-center mx-auto sm:mt-8 md:mt-10 lg:mt-14 xl:mt-16">
+        <!-- Item-1 -->
+        <div class="ml-4 mr-0 mt-7 w-[243.42px] h-[229.94px] bg-emerald-400 bg-opacity-50 rounded-[10px] sm:w-[280px] sm:h-[260px] lg:w-[400px] lg:h-[380px] xl:w-[530px] xl:h-[510px]">
+            <img src="asset/image 24.svg" alt="logo-1" class="absolute w-[23.50px] h-[32.30px] ml-[23px] mt-[12px] sm:w-[30.50px] sm:h-[40px] sm:mt-3 md:w-[30.50px] md:h-[40px] md:mt-2 lg:w-[55px] lg:h-[65px] xl:w-[75px] xl:h-[85px] xl:mt-[22px] xl:ml-[28px] flex-shrink">
+            <div class="py-2 mt-4 text-center text-cyan-800 text-[11px] static font-bold font-['Plus Jakarta Sans'] sm:text-[13px] md:text-[14px] lg:text-[20px] xl:text-[27px] md:mt-4 lg:mt-8">West Borneo</div>
+            <div class="-mt-2 text-center text-slate-700 text-[10px] z-0 relative font-bold font-['Plus Jakarta Sans'] sm:text-[12px] md:text-[13px] lg:text-[19px] xl:text-[26px]">e-procurement System</div>
+            <img src="asset/Apple Macbook Pro 15_ Space Grey.svg" alt="laptop" class="absolute bg-no-repeat w-[237.12px] h-[148.34px] z-20 mt-[15px] ml-1 sm:w-[270.12px] sm:h-[170.34px] md:ml-2 lg:w-[380px] lg:h-[400px] lg:-mt-14 xl:w-[510px] xl:h-[460px] xl:-mt-8">
+            <img src="asset/image 26.svg" alt="layar-laptop-1" class="absolute z-10 w-[177.11px] h-[112.21px] mt-[33px] ml-[34px] sm:w-[210.11px] sm:h-[150.21px] sm:mt-[28px] md:w-[200.11px] md:h-[140.21px] md:ml-[43px] md:mt-[30px] lg:w-[290px] lg:h-[300px] lg:-mt-2 lg:ml-[55px] xl:w-[380px] xl:h-[410px] xl:-mt-2 xl:ml-[73px]">
+            <img src="asset/Pattern.svg" alt="Pattern-1" class="relavite z-10 rounded-[10px] -mt-[20px] sm:-mt-[24px] md:-mt-[26px] lg:-mt-[36px] xl:-mt-[31px]">
+        </div>
+
+        <!-- Item-2 -->
+        <div class="mt-[29px] ml-4 w-[243.42px] h-[229.94px] bg-purple-300 bg-opacity-50 rounded-[11px] sm:ml-10 sm:w-[280px] sm:h-[260px] md:ml-12 lg:ml-14 xl:ml-16 lg:w-[400px] lg:h-[380px] xl:w-[530px] xl:h-[510px]">
+            <div class="text-center text-violet-600 text-[11px] font-bold font-['Plus Jakarta Sans'] sm:text-[13px] md:text-[14px] lg:text-[20px] xl:text-[27px] sm:mt-2 lg:mt-6">BMI</div>
+            <div class="text-center text-slate-700 text-[10px] font-bold font-['Plus Jakarta Sans'] sm:text-[12px] md:text-[13px] lg:text-[19px] xl:text-[26px]">Employee Monitoring</div>
+            <img src="asset/Apple iPhone 11 Pro Midnight Green.svg" alt="iPhone" class="absolute bg-no-repeat w-[59.83px] h-[129.36px] ml-[20px] mt-[35px] z-40 sm:w-[70px] sm:h-[140px] sm:ml-[22px] sm:mt-[37px] md:w-[80px] md:h-[150.36px] md:ml-[20px] md:mt-[35px] lg:w-[120px] lg:h-[190.36px] lg:mt-[62px] xl:w-[220px] xl:h-[280px] xl:mt-[75px] xl:ml-[10px]">
+            <img src="asset/image 17.svg" alt="layar-iPhone-1" class="absolute z-30 w-[52.40px] h-[119.70px] mt-[40px] ml-[24px] sm:w-[65px] sm:h-[130px] md:w-[82.40px] md:h-[140px] md:ml-[19px] lg:w-[118.40px] lg:h-[175px] lg:mt-[69px] lg:ml-[21px] xl:w-[190px] xl:h-[257px] xl:mt-[88px] xl:ml-[24px]">
+            <img src="asset/Apple iMac.svg" alt="laptop-2" class="absolute bg-no-repeat z-20 hidden sm:block md:w-[200px] md:h-[200px] md:ml-[68px] md:-mt-2 sm:w-[210px] sm:h-[190px] sm:ml-[50px] sm:mt-1 lg:w-[280px] lg:h-[300px] xl:w-[380px] xl:h-[380px] xl:ml-[120px]">
+            <img src="asset/Apple iMac-1.svg" alt="laptop-hp" class="absolute bg-no-repeat z-20 ml-[55px] sm:hidden">
+            <img src="asset/Untitled 1.png" alt="layar-laptop-2" class="absolute z-10 w-[190px] h-[180px] -mt-[23px] ml-[41px] sm:w-[220px] sm:h-[200px] sm:-mt-[19px] sm:ml-[36px] md:w-[215px] md:h-[200px] md:ml-[50px] md:-mt-[22px] lg:w-[290px] lg:h-[300px] xl:w-[400px] xl:h-[380px] xl:-mt-[35px] xl:ml-[90px]">
+            <img src="asset/image 22.svg" alt="logo-2" class="absolute z-10 flex-shrink w-[39.89px] h-[18.73px] ml-[10px] mt-[168px] sm:w-[50px] sm:h-[35px] sm:mt-[175px] md:w-[39.89px] md:h-[18.73px] md:mt-[185px] lg:w-[60.89px] lg:h-[43.73px] lg:mt-[250px] xl:w-[75px] xl:h-[60px] xl:mt-[350px] xl:ml-[20px]">
+            <img src="asset/Pattern-2.svg" alt="Pattern-2" class="relative z-0 rounded-br-[10px] rounded-bl-xl mt-5 sm:mt-2 md:mt-1 xl:mt-4">
+        </div>
+      </div>
+
+      <!-- Box kanan-kiri 2 -->
+      <div class="flex flex-wrap justify-center mx-auto">
+        <!-- Item-3 -->
+        <div class="mt-[29px] ml-4 w-[243.42px] h-[229.94px] bg-red-200 bg-opacity-50 rounded-[11px] sm:w-[280px] sm:h-[260px] sm:mt-10 md:mt-12 lg:mt-14 xl:mt-16 lg:w-[400px] lg:h-[380px] xl:w-[530px] xl:h-[510px]">
+          <img src="asset/Picture1 1.svg" alt="logo-3" class="absolute w-[52.70px] h-[53.28px] ml-[180px] mt-[12px] flex-shrink sm:w-[64px] sm:h-[64px] sm:ml-[190px] md:ml-[200px] lg:w-[93px] lg:h-[93px] lg:ml-[290px] xl:w-[120px] xl:h-[120px] xl:ml-[400px]">
+          <img src="asset/Dell UltraSharp 27_.svg" alt="laptop-3" class="absolute bg-no-repeat w-[237.12px] h-[148.34px] mt-[70px] z-20 sm:w-[270.12px] sm:h-[170.34px] md:mt-[75px] lg:w-[350.12px] lg:h-[250.34px] lg:ml-[20px] lg:mt-[100px] xl:w-[450px] xl:h-[350px] xl:ml-[30px] xl:mt-[130px]">
+          <img src="asset/image 19.svg" alt="layar-laptop-3" class="absolute z-10 w-[180.11px] h-[130.21px] mt-[60px] ml-[28px] sm:w-[208.11px] sm:h-[165.21px] sm:mt-[50px] sm:ml-[31px] md:ml-[31px] md:mt-[55px] lg:w-[306px] lg:h-[260px] lg:ml-[41px] lg:mt-[62px] xl:w-[430px] xl:h-[420px] xl:mt-[50px] xl:ml-[40px]">
+          <img src="asset/Pattern-3.svg" alt="Pattern-3" class="relavite pt-[22px] rounded-lg md:pt-[20px] lg:pt-[36px] xl:pt-[55px]">
+        </div>
+
+        <!-- Item-4 -->
+        <div class="mt-[29px] ml-4 w-[243.42px] h-[229.94px] bg-green-300 bg-opacity-50 rounded-[10px] sm:w-[280px] sm:h-[260px] sm:ml-12 sm:mt-10 md:ml-12 md:mt-12 lg:ml-14 lg:mt-14 xl:ml-16 xl:mt-16 lg:w-[400px] lg:h-[380px] xl:w-[530px] xl:h-[510px]">
+            <div class="relative pt-2 text-center text-green-800 text-[11px] font-bold font-['Plus Jakarta Sans'] z-10 sm:text-[13px] md:text-[14px] lg:text-[20px] xl:text-[27px] sm:mt-1 md:mt-2 lg:mt-4">BelanjaSmart</div>
+            <div class="relative text-center text-slate-700 text-[10px] font-bold font-['Plus Jakarta Sans'] z-10 sm:text-[12px] md:text-[13px] lg:text-[19px] xl:text-[26px]">Employee Monitoring</div>
+            <img src="asset/image 23.svg" alt="logo-4" class="absolute bg-no-repeat w-[51.27px] h-[18px] ml-[160px] mt-[42px] z-10 sm:w-[58.27px] sm:h-[25px] sm:ml-48 md:mt-9 lg:w-[75px] lg:h-[40px] lg:ml-72 lg:mt-12 xl:w-[110px] xl:h-[70px] xl:ml-[380px] xl:mt-14">
+            <img src="asset/Apple iPhone 11 Pro Max Gold.svg" alt="hp" class="absolute z-30 w-[130.67px] h-[170.27px] mt-[10px] ml-[50px] sm:w-[145px] sm:h-[185px] sm:ml-[65px] lg:w-[245px] lg:h-[275px] lg:ml-[80px] xl:w-[360px] xl:h-[360px] xl:ml-[90px] xl:mt-4">
+            <img src="asset/image 19 (besar).svg" alt="layar-hp-1" class="absolute z-20 w-[80.20px] h-[160px] mt-[15px] ml-[75px] sm:w-[95px] sm:h-[175px] sm:ml-[90px] lg:w-[195px] lg:h-[256px] lg:ml-[105px] lg:mt-[17px] xl:w-[290px] xl:h-[335px] xl:ml-[125px] xl:mt-[27px]">
+            <img src="asset/Pattern-4.svg" alt="Pattern-4" class="relative z-0 sm:-mt-3 md:-mt-4">
+        </div>
+      </div>
+
+      <!-- Button laptop -->
+      <div class="items-center justify-center mt-[75px] mb-16 xl:mt-32 hidden sm:block">
+        <button class="flex items-center bg-teal-600 rounded-[5px] px-5 py-2 mx-auto lg:px-8 lg:py-2 xl:px-10 xl:py-3">
+          <span class="text-white text-[15px] lg:text-[20px] xl:text-[24px] font-semibold font-['Plus Jakarta Sans']">See More</span>
+          <img src="asset/right-arrow 1.svg" alt="" class="w-6 h-6 ml-[20px] lg:w-8 lg:h-8 lg:ml-6 xl:w-9 xl:h-9 xl:ml-7">
+        </button>
+      </div>
+      
+      <!-- Button handphone -->
+      <div class="flex items-center justify-center mt-8 mb-6 sm:hidden">
+        <button class="bg-teal-600 hover:bg-teal-700 text-white py-2 px-6 rounded-sm flex items-center space-x-2">
+          <span class="text-xs">See More</span>
+          <img src="asset/Vector.svg" alt="" class="w-4 h-5">
+        </button>
+      </div>  
+  </div>
+
+</div>
+
+<!-- Ali -->
+<div class="mt-20 scroll-mt-[90px]" id="services"></div>
+<div class="mx-3">
+  <section class="mx-5 md:mx-10">
+      <div class="flex flex-col items-center justify-center space-y-3">
+          <p class="text-gray-800 text-center font-plus-jakarta-sans font-bold text-3xl md:text-4xl">
+              Why<span class="text-teal-500 ml-2">Should us?</span>
+          </p>
+      </div>
+  
+      <div class="flex flex-col items-center justify-center mt-5 md:mt-5">
+          <p class="w-full md:w-3/4 lg:w-[640px] text-center text-neutral-800 text-opacity-60 text-base md:text-lg font-normal font-['Plus Jakarta Sans']">
+              Are you seeking a dynamic IT consultant to elevate your business to new heights? Look no further – we've got the winning edge!
+          </p>
+      </div>
+  </section>
+  </div>
+  <div class="mx-12">
+      <section class="mt-12 md:mt-16">
+          <div class="flex flex-wrap items-center justify-center mt-[10px] text-center  space-x-5">
+      
+              <!-- First Row -->
+              <div class="text-center mb-4">
+                  <img class="w-12 h-12 mx-auto relative" src="asset/price 2.svg" />
+                  <p class="w-[300px] text-neutral-800 text-xl font-semibold font-Manrope leading-loose">Flexible Pricing</p>
+                  <p class="w-[300px] text-neutral-800 text-base font-normal font-Manrope leading-relaxed">Our flexible pricing ensures you get the best value for your investment.</p>
+              </div>
+      
+              <div class="text-center mb-4">
+                  <img class="w-12 h-12 mx-auto relative" src="asset/contract 2.svg" />
+                  <p class="w-[300px] text-neutral-800 text-xl font-semibold font-Manrope leading-loose">Seamless Pre-Contact</p>
+                  <p class="w-[300px] text-neutral-800 text-base font-normal font-Manrope leading-relaxed">We understand that the journey begins before the contract is signed.</p>
+              </div>
+      
+              <div class="text-center mb-4">
+                  <img class="w-12 h-12 mx-auto relative" src="asset/growth 2.svg" />
+                  <p class="w-[300px] text-neutral-800 text-xl font-semibold font-Manrope leading-loose">Performance Reviews</p>
+                  <p class="w-[300px] text-neutral-800 text-base font-normal font-Manrope leading-relaxed">We conduct periodic reviews to assess and enhance our services.</p>
+              </div>
+      
+              <!-- Second Row -->
+              <div class="text-center mb-4">
+                  <img class="w-12 h-12 mx-auto relative" src="asset/agile 2.svg" />
+                  <p class="w-[300px] text-neutral-800 text-xl font-semibold font-Manrope leading-loose">Agile Management</p>
+                  <p class="w-[300px] text-neutral-800 text-base font-normal font-Manrope leading-relaxed">We implement strategies that adapt to changes, ensuring your IT solutions are always aligned with your business goals.</p>
+              </div>
+      
+              <div class="text-center mb-4">
+                  <img class="w-12 h-12 mx-auto relative" src="asset/target 2.svg" />
+                  <p class="w-[300px] text-neutral-800 text-xl font-semibold font-Manrope leading-loose">OKR Mastery</p>
+                  <p class="w-[300px] text-neutral-800 text-base font-normal font-Manrope leading-relaxed">Our team is skilled at using OKRs to measure and achieve tangible outcomes, ensuring your business objectives are met.</p>
+              </div>
+      
+          </div>
+      </section>
+  </div>
+
+<div class="mt-16 scroll-mt-[90px]" id="testimonial"></div>
+<!-- David -->
+    <!-- section What The Say -->
+    <section class="section section-Testimonial bg-[#10957D] relative" id="customDiv" onload="applyTailwindConfig(this)">
+        <img src="img/Quote-Mark.svg" alt="" class=" hidden lg:block absolute top-6 right-4">
+        <img src="img/tandapetik.svg" alt="" class="lg:hidden absolute top-8 right-8 opacity-40 md:top-12 md:w-20 md:right-3">
+        <div class="container mx-auto">
+            <h2 class="common-header text-white font-semibold text-center text-2xl pt-4 mb-[1rem] md:text-3xl md:pt-8 md:mb-[2rem] lg:text-4xl lg:pt-16 lg:text-start lg:ml-12 xl:text-5xl 2xl:text-6xl">What They Say?</h2>
+        </div>
+            
+        <div class="swiper mySwiper mx-10 pb-12 md:mx-12 lg:mx-14 xl:mx-16">
+            <div class="swiper-wrapper">
+                
+            <div class="swiper-slide">
+                <div class="swiper-slide font-[Manrope]">
+                    <div class="swiper-client-msg h-[280px] msm:h-[250px] lsm3:h-[190px] lsm:h-[230px] md:h-[240px] lg:h-[230px] xl:h-[220px] py-4 px-4 rounded-xl bg-white text-center">
+                        <h2 class="font-medium text-[16px] pt-2 msm:text-[17px] lsm:text-[18px] md:text-[18px] lg:text-[17px] xl:text-[18px] xl:pt-1.5">Incredible Experience</h2>
+                        <p class="font-normal text-[11px] py-[26px] msm:text-[11.5px] lsm3:py-[12px] lsm:py-[28px] md:py-[34px] md:text-[12px] lg:text-[13px] lg:py-[30px] xl:text-[14px] xl:px-7">We had an incredible experience working with Hotama and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.</p>
+                    </div>
+                    <div class="h-4 w-4 md:h-5 md:w-5 md:-mt-3 lg:h-6 lg:w-6 lg:-mt-3.5 bg-white rotate-45 rounded mx-auto -mt-2.5"></div>
+                    <div class="swiper-client-data text-white flex justify-center gap-4 pt-4 md:pt-5 lg:pt-6">
+                        <figure>
+                            <img src="img/Picture2.svg" class="rounded-full h-10 md:h-12 lg:h-14" alt="">
+                        </figure>
+                        <div class="client-data-details">
+                            <p class="font-medium text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px]">Arabella Josephine</p>
+                            <p class="font-normal pt-1 text-[11px] md:text-[12px] lg:text-[13px] xl:text-[14px]">Direktur CV. Kreasi Kite</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="swiper-slide font-[Manrope]">
+                    <div class="swiper-client-msg h-[280px] msm:h-[250px] lsm3:h-[190px] lsm:h-[230px] md:h-[240px] lg:h-[230px] xl:h-[220px] py-4 px-4 rounded-xl bg-white text-center">
+                        <h2 class="font-medium text-[16px] pt-2 msm:text-[17px] lsm:text-[18px] md:text-[18px] lg:text-[17px] xl:text-[18px] xl:pt-1.5">Unbelievable Encounter</h2>
+                        <p class="font-normal text-[11px] py-[26px] msm:text-[11.5px] lsm3:py-[12px] lsm:py-[28px] md:py-[34px] md:text-[12px] lg:text-[13px] lg:py-[30px] xl:text-[14px] xl:px-7">We had an incredible experience working with Hotama and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful improvements they made and their ability to get familiar with the concept so quickly. It acted as a catalyst to take our design to the next level and get more eyes on our product.</p>
+                    </div>
+                    <div class="h-4 w-4 md:h-5 md:w-5 md:-mt-3 lg:h-6 lg:w-6 lg:-mt-3.5 bg-white rotate-45 rounded mx-auto -mt-2.5"></div>
+                    <div class="swiper-client-data text-white flex justify-center gap-4 pt-4 md:pt-5 lg:pt-6">
+                        <figure>
+                            <img src="img/Picture1.svg" class="rounded-full h-10 md:h-12 lg:h-14" alt="">
+                        </figure>
+                        <div class="client-data-details">
+                            <p class="font-medium text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px]">Nathaniel Benjamin</p>
+                            <p class="font-normal pt-1 text-[11px] md:text-[12px] lg:text-[13px] xl:text-[14px]">Direktur CV. EksaTekno Solusi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="swiper-slide font-[Manrope]">
+                    <div class="swiper-client-msg h-[280px] msm:h-[250px] lsm3:h-[190px] lsm:h-[230px] md:h-[240px] lg:h-[230px] xl:h-[220px] py-4 px-4 rounded-xl bg-white text-center">
+                        <h2 class="font-medium text-[14px] pt-2 msm:text-[15px] lsm:text-[16px] md:text-[16px] lg:text-[17px] lg:py-3 xl:text-[18px] xl:py-2">Dependable, Responsive, Professional Partner</h2>
+                        <p class="font-normal text-[11px] py-2 msm:text-[11.5px] lsm3:py-[14px] lsm2:py-8 md:text-[12px] lg:text-[13px] xl:text-[14px] xl:pt-5 lg:px-7">Being part of the collaboration with Hotama in application development has provided an incredible experience for us. Hotama is not just a development partner, but also a strategic partner who understands our vision deeply. Professional work processes, team compassion, and expertise in overcoming technical challenges made our experience with Hotama very satisfying.</p>
+                    </div>
+                    <div class="h-4 w-4 md:h-5 md:w-5 md:-mt-3 lg:h-6 lg:w-6 lg:-mt-3.5 bg-white rotate-45 rounded mx-auto -mt-2.5"></div>
+                    <div class="swiper-client-data text-white flex justify-center gap-4 pt-4 md:pt-5 lg:pt-6">
+                        <figure>
+                            <img src="img/Photo1.svg" class="rounded-full h-10 md:h-12 lg:h-14" alt="">
+                        </figure>
+                        <div class="client-data-details lg:pt-0">
+                            <p class="font-medium text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px]">Anastasia Cordelia</p>
+                            <p class="font-normal pt-1 text-[11px] md:text-[12px] lg:text-[13px] xl:text-[14px]">CEO PT. ApexTeknologi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="swiper-slide font-[Manrope]">
+                    <div class="swiper-client-msg h-[280px] msm:h-[250px] lsm3:h-[190px] lsm:h-[230px] md:h-[240px] lg:h-[230px] xl:h-[220px] py-4 px-4 rounded-xl bg-white text-center">
+                        <h2 class="font-medium text-[14px] pt-2 msm:text-[15px] lsm:text-[16px] md:text-[16px] lg:text-[17px] lg:py-0 xl:text-[18px] xl:py-2">Reliable, Quick-to-Respond, Competent Collaborator</h2>
+                        <p class="font-normal text-[11px] py-2 msm:text-[11.5px] lsm3:py-[14px] md:text-[12px] lg:text-[13px] xl:text-[14px] xl:pt-5 xl:px-7">The applications developed by Hotama not only adhere to high standards in design and functionality, but are also able to exceed our expectations. They not only focus on the current task, but always think ahead to help us formulate a long-term vision and future opportunities. Their expertise in integrating innovative features and solutions that fit our specific needs was a significant added value.</p>
+                    </div>
+                    <div class="h-4 w-4 md:h-5 md:w-5 md:-mt-3 lg:h-6 lg:w-6 lg:-mt-3.5 bg-white rotate-45 rounded mx-auto -mt-2.5"></div>
+                    <div class="swiper-client-data text-white flex justify-center gap-4 pt-4 md:pt-5 lg:pt-6">
+                        <figure>
+                            <img src="img/Photo2.svg" class="rounded-full h-10 md:h-12 lg:h-14" alt="">
+                        </figure>
+                        <div class="client-data-details lg:pt-0.5">
+                            <p class="font-medium text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px]">Valentina Octavia</p>
+                            <p class="font-normal pt-1 text-[11px] md:text-[12px] lg:text-[13px] xl:text-[14px]">CEO PT. Quantum Teknologi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="swiper-slide font-[Manrope]">
+                    <div class="swiper-client-msg h-[280px] msm:h-[250px] lsm3:h-[190px] lsm:h-[230px] md:h-[240px] lg:h-[230px] xl:h-[220px] py-4 px-4 rounded-xl bg-white text-center">
+                        <h2 class="font-medium text-[14px] pt-2 msm:text-[15px] lsm:text-[16px] md:text-[16px] lg:text-[17px] xl:text-[18px]">Hotama Takes Web Design to New Heights</h2>
+                        <p class="font-normal text-[11px] py-2 msm:text-[11.5px] lsm3:py-[14px] lsm1:py-8 md:text-[12px] lg:text-[13px] lg:py-8 xl:text-[14px] xl:pt-7 xl:px-7">The website they produced not only reflects high design expertise and functionality, but also reflects their deep understanding of our brand identity and vision. Hotama not only completed the project, but they were committed to providing a solution that exceeded our expectations. They are always willing to collaborate, provide creative ideas, and explain each step clearly.</p>
+                    </div>
+                    <div class="h-4 w-4 md:h-5 md:w-5 md:-mt-3 lg:h-6 lg:w-6 lg:-mt-3.5 bg-white rotate-45 rounded mx-auto -mt-2.5"></div>
+                    <div class="swiper-client-data text-white flex justify-center gap-4 pt-4 md:pt-5 lg:pt-6">
+                        <figure>
+                            <img src="img/Photo3.svg" class="rounded-full h-10 md:h-12 lg:h-14" alt="">
+                        </figure>
+                        <div class="client-data-details lg:pt-0.5">
+                            <p class="font-medium text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px]">Ophelia Celestine</p>
+                            <p class="font-normal pt-1 text-[11px] md:text-[12px] lg:text-[13px] xl:text-[14px]">CEO PT. InovasiTek Terkini</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="swiper-slide">
+                <div class="swiper-slide font-[Manrope]">
+                    <div class="swiper-client-msg h-[280px] msm:h-[250px] lsm3:h-[190px] lsm:h-[230px] md:h-[240px] lg:h-[230px] xl:h-[220px] py-4 px-4 rounded-xl bg-white text-center">
+                        <h2 class="font-medium text-[14px] pt-2 px-2 msm:text-[15px] lsm:text-[16.25px] md:text-[16px] lg:text-[17px] xl:text-[18px]">Strategic Partner in Website Excellence</h2>
+                        <p class="font-normal text-[11px] py-2 msm:text-[11.5px] lsm3:py-[14px] lsm1:py-8 md:text-[12px] lg:text-[13px] lg:py-8 xl:text-[14px] xl:pt-7 xl:px-7">Working with Hotama on the development of our website has been a great experience. Hotama is not just a provider of website creation services, but a very dedicated strategic partner. From start to finish of the project, the Hotama team has demonstrated a high level of professionalism, extraordinary creativity and consistent commitment to delivering the best results.</p>
+                    </div>
+                    <div class="h-4 w-4 md:h-5 md:w-5 md:-mt-3 lg:h-6 lg:w-6 lg:-mt-3.5 bg-white rotate-45 rounded mx-auto -mt-2.5"></div>
+                    <div class="swiper-client-data text-white flex justify-center gap-4 pt-4 md:pt-5 lg:pt-6">
+                        <figure>
+                            <img src="img/Photo4.svg" class="rounded-full h-10 md:h-12 lg:h-14" alt="">
+                        </figure>
+                        <div class="client-data-details lg:pt-0.5">
+                            <p class="font-medium text-[16px] md:text-[17px] lg:text-[18px] xl:text-[19px]">Jonathan Alexander</p>
+                            <p class="font-normal pt-1 text-[11px] md:text-[12px] lg:text-[13px] xl:text-[14px]">CEO PT. InnovateTek</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+<div class="mt-40"></div>
+<!-- Ali -->
+<div class="mx-10">
+  <section class="mx-10">
+  <div class="flex flex-col items-center justify-center space-y-3">
+      <p class="text-gray-800 text-center font-plus-jakarta-sans font-bold text-4xl md:text-5xl">
+          Our<span class="text-teal-500 ml-3">Partners</span>
+      </p>
+  </div>
+
+  <div class="flex flex-col items-center justify-center mt-10">
+      <p
+          class="w-full md:w-3/4 lg:w-[728px] text-center text-neutral-800 text-opacity-60 text-lg md:text-2xl font-normal font-['Plus Jakarta Sans']">
+          They are the driving force behind our achievements, standing by us as we navigate the
+          dynamic landscape of technology
+      </p>
+  </div>
+
+  <div class="flex flex-wrap items-center justify-center mt-[10px] text-center">
+      <img class="w-24 h-auto lg:w-36 lg:h-auto mx-4 my-4" src="asset/niagahoster_logo 1.svg" />
+      <img class="w-24 h-auto lg:w-36 lg:h-auto mx-4 my-4" src="asset/qontak_logo-transformed 1.svg" />
+      <img class="w-24 h-auto lg:w-36 lg:h-auto mx-4 my-4" src="asset/meta logo.svg" />
+      <img class="w-24 h-auto lg:w-36 lg:h-auto mx-4 my-4" src="asset/google logo.svg" />
+      <img class="w-24 h-auto lg:w-36 lg:h-auto mx-4 my-4" src="asset/vultr logo.svg" />
+  </div>
+</section>
+
+
+<section class="sm:mx-32 lg:mx-16 mt-24 mb-16 sm:mb-[20px] xl:mb-32 lg:mb-40 md:mb-[400px] 2xl:content-center mr-5">
+  <div class="w-full h-[398px] relative flex flex-col items-center lg:flex-row mx-auto">
+      <img src="asset/backup 1.svg" class="w-40 sm:w-[360px] mb-5 lg:mb-0">
+
+      <div class="absolute sm:top-0 sm:left-1/2 transform sm:-translate-x-1/2 absolute top-[160px] sm:left-[550px] md:left-[550px] left-[30px] lg:left-[460px]">
+          <img src="asset/Star.png" class="sm:w-full w-3">
+      </div>
+
+      <div class="ml-5 text-center lg:text-right grow">
+          <p class="text-[20px] sm:text-lg text-gray-800 font-plus-jakarta-sans font-bold text-3xl md:text-4xl lg:text-5xl">
+              Enjoying what
+          <div
+              class="text-[20px] sm:text-lg text-teal-500 ml-3 mt-[-15px] sm:mt-0 font-plus-jakarta-sans font-bold text-3xl md:text-4xl lg:text-5xl">
+              you've seen</span><span class="text-gray-800 ml-3">so far?</div>
+          </p>
+          <div class="mt-5 md:mt-7 lg:mt-10">
+              <p class="text-sm text-neutral-800 text-lg md:text-2xl lg:text-2xl font-light font-['Plus Jakarta Sans']">
+                  We're opening wide doors of collaboration for you, offering exceptional contributions and
+                  services.<br>
+                  <span
+                      class="text-sm text-teal-600 text-lg md:text-2xl lg:text-2xl font-medium font-['Plus Jakarta Sans']">
+                      Let's embark on a journey of growth together!
+                  </span>
+              </p>
+
+              <div class="absolute top-[285px] right-[-20px] sm:top-[270px] sm:right-[-30px]">
+                  <img src="asset/sparkle.png" alt="">
+              </div>
+
+              <button
+                  class="hover:bg-teal-800 text-sm px-5 py-2 sm:text-lg sm:px-10 left-0 top-0 absolute bg-teal-600 rounded-[5px] absolute text-center text-gray-100 text-[25px] font-semibold font-['Plus Jakarta Sans'] mt-5 relative">Get
+                  In Touch!</button>
+          </div>
+      </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="border-t border-neutral-300 text-zinc-100 font-['Plus Jakarta Sans'] xl:pb-24 xl:w-full lg:pb-64 md:pb-44" style="background-color: #272732; position: relative;">
+  <div class="sm:mx-16 mx-1 mt-16 text-xs max-sm:mt-1">
+      <div class="container mx-auto py-8 px-4 flex flex-wrap justify-between relative">
+
+          <div class="w-full md:w-1/2 lg:w-1/4 mb-32 md:mb-0">
+              <img src="asset/logo footer.svg" alt="">
+              <p class="mt-8 mr-3">PT Kreasi Putra Hotama is a reputable software development and IT consulting company with over 10 years of experience</p>
+          </div>
+
+          <div class="md:w-1/2 lg:w-1/4 mb-8 md:mb-0 flex items-center absolute left-3 md:bottom-0 md:top-[250px] top-[210px] md:bottom-[-80px]">
+              <img class="w-7 h-7 bg-gray-400 rounded-full mx-1" src="asset/Facebook.png">
+              <img class="w-7 h-7 bg-gray-400 rounded-full mx-1" src="asset/linkedin.png">
+              <img class="w-7 h-7 bg-gray-400 rounded-full mx-1" src="asset/instagram.png">
+          </div>
+          
+          <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+              <p class="text-teal-400 text-2xl font-bold mb-4">Contact</p>
+             <p class="mt-3"><span class="mb-6 font-bold">Address :</span>&nbsp;Sungai Raya Dalam Street, Golden City Complex, No D3. Pontianak, West Borneo 78391</p>
+              <p class="mt-3"><span class="mt-6 font-bold">Phone :</span>(+62) 8114867735</p>
+              <p class="mt-3"><span class="mb-6 font-bold">E-mail :</span>hi@hotama.co.id</p>
+          </div>
+
+          <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+              <p class="text-teal-400 text-2xl font-bold mb-4">Company</p>
+              <div class="mb-6">
+                  <a href="#" class="block mb-3 hover:text-gray-300">Services</a>
+                  <a href="#" class="block mb-3 hover:text-gray-300">Products</a>
+                  <a href="#" class="block mb-3 hover:text-gray-300">Partners</a>
+                  <a href="#" class="block mb-3 hover:text-gray-300">Privacy & Policy</a>
+              </div>
+          </div>
+  
+          <div class="w-full md:w-1/2 lg:w-1/4 mb-8 md:mb-0">
+              <a class="block text-teal-400 text-2xl font-bold mb-4 hover:text-gray-300">Information</a>
+              <a class="block mb-3 hover:text-gray-300">FAQ</a>
+              <a class="block mb-6 hover:text-gray-300" id="contact">About Us</a>
+          </div>
+          
+      </div>
+  </div>
+</footer>
+
+<!-- swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="js/main.js"></script>
+<!-- main -->
+<script src="js/swiper-bundle.min.js"></script>
+<script>
+
+    const tailwindConfig = {
+      theme: {
+        extend: {
+          screens: {
+            'ssm': 'var(--ssm)',
+            'msm': 'var(--msm)',
+            'lsm': 'var(--lsm)',
+            'lsm1': 'var(--lsm1)',
+            'lsm2': 'var(--lsm2)',
+            'lsm3': 'var(--lsm3)',
+            'sm': 'var(--sm)',
+            'md': 'var(--md)',
+            'lg': 'var(--lg)',
+            'xl': 'var(--xl)',
+            '2xl': 'var(--2xl)',
+          }
+        }
+      }
+    };
+  
+    function applyTailwindConfig(element) {
+
+      element.style.setProperty('--ssm', '325px');
+      element.style.setProperty('--msm', '375px');
+      element.style.setProperty('--lsm', '425px');
+      element.style.setProperty('--lsm1', '427px');
+      element.style.setProperty('--lsm2', '457px');
+      element.style.setProperty('--lsm3', '508px');
+      element.style.setProperty('--sm', '640px');
+      element.style.setProperty('--md', '768px');
+      element.style.setProperty('--lg', '1024px');
+      element.style.setProperty('--xl', '1280px');
+      element.style.setProperty('--2xl', '1536px');
+ 
+      tailwind.config = tailwindConfig;
+      // TailwindCSS.init(); // Aktifkan inisialisasi jika diperlukan
+    }
+  </script>
+  
+    <script>
+    function Menu(e){
+      let list = document.querySelector('ul');
+  
+      e.name === 'menu' ? (e.name = "close", list.classList.add('top-[68px]') , list.classList.add('opacity-100') ,  list.classList.add('bg-teal-500')) 
+       : (e.name = "menu",list.classList.remove('top-[68px]'),list.classList.remove('opacity-100') , list.classList.remove('bg-teal-500')) 
+    }
+
+   
+            document.addEventListener('DOMContentLoaded', function () {
+                const serviceCards = document.querySelectorAll('.service-card');
+    
+                serviceCards.forEach(card => {
+                    card.addEventListener('click', function () {
+                        this.classList.toggle('active');
+                    });
+                });
+            });
+        </script>
+    
+
+</body>
+</html>
